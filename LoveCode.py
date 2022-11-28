@@ -1,7 +1,7 @@
 '''
 爱心项目：
 里面应用的相关知识/语法
-pi, sin(), cos() 函数（都归为 ‘Math’ 方法）
+pi, sin(), cos(), log 函数（都归为 ‘Math’ 方法）
 def 函数
 tkinter 包的相关知识
 random 包的相关知识（随机函数）
@@ -88,7 +88,7 @@ class Heart:
 
     # Let love act 让爱心动起来（按帧缩放，不建议改动）
     def calc_position(self, x, y, ratio):
-        force = 1 / (((x - CANVAS_CENTER_X) ** 2 + (y - CANVAS_CENTER_Y) ** 2) ** 0.4) # 0.4 可以改动建议不大于1，小于0.3
+        force = 1 / (((x - CANVAS_CENTER_X) ** 2 + (y - CANVAS_CENTER_Y) ** 2) ** 0.4)  # 0.4 可以改动建议不大于1，小于0.3
         dx = ratio * force * (x - CANVAS_CENTER_X) + random.randint(-1,1)
         dy = ratio * force * (y - CANVAS_CENTER_Y) + random.randint(-1,1)
         return x - dx, y - dy
@@ -97,8 +97,8 @@ class Heart:
     def calc(self, frame):
         calc_position = self.calc_position
         ratio = 10 * curve(frame / 10 * pi)
-        halo_radius = int(4 + 6 * (1 + curve(frame / 10 * pi)))           # 这行可以不要
-        halo_number = int(3000 + 4000 * abs(curve(frame / 10 * pi) ** 2)) # 这行可以不要
+        halo_radius = int(4 + 6 * (1 + curve(frame / 10 * pi)))            # 这行可以不要
+        halo_number = int(3000 + 4000 * abs(curve(frame / 10 * pi) ** 2))  # 这行可以不要
         all_points = []
 
         # outline
